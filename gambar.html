@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000; /* Latar belakang hitam pekat tanpa embel-embel */
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Tepat 4 kolom berjejer */
+            gap: 0px; /* Menggunakan 0px agar foto benar-benar menempel rapi tanpa jarak */
+            width: 100%;
+        }
+        .grid-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Responsif untuk layar HP agar tidak terlalu sempit */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Menjadi 2x2 di layar kecil */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <img src="1.jpeg" alt="">
+    <img src="2.jpeg" alt="">
+    <img src="3.jpeg" alt="">
+    <img src="4.jpeg" alt="">
+</div>
+
+</body>
+</html>
