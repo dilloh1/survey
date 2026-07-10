@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuesioner Penelitian Organisasi Kepemudaan & Intra Sekolah</title>
+    <link rel="icon" href="icon.png">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .header-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 30px 24px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .header-banner h1 {
+            font-size: 18pt;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .header-banner p {
+            font-size: 11pt;
+            margin: 0;
+            color: #cbd5e1;
+        }
+        .section-box {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+        .section-title {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 14px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .section-desc {
+            font-size: 10pt;
+            font-style: italic;
+            color: #64748b;
+            margin-bottom: 20px;
+            background-color: #f8fafc;
+            padding: 10px 14px;
+            border-left: 4px solid #3b82f6;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+        .question-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #334155;
+        }
+        .option-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .option-item input[type="checkbox"], 
+        .option-item input[type="radio"] {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .input-text {
+            width: 100%;
+            max-width: 350px;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 10.5pt;
+            color: #1e293b;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .input-text:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgb(59 130 246 / 0.2);
+        }
+        .input-inline-text {
+            width: 200px;
+            padding: 4px 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 10pt;
+            margin-left: 8px;
+        }
+        .textarea-input {
+            width: 100%;
+            height: 100px;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 10.5pt;
+            font-family: inherit;
+            resize: vertical;
+            outline: none;
+        }
+        .textarea-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgb(59 130 246 / 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 10pt;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 12px 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-weight: 600;
+        }
+        td.statement {
+            text-align: left;
+            width: 55%;
+            font-weight: 500;
+            color: #334155;
+        }
+        td input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .btn-submit {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 11pt;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+            transition: background-color 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #1d4ed8;
+        }
+        .footer-note {
+            text-align: center;
+            font-style: italic;
+            color: #64748b;
+            font-size: 10pt;
+            margin-top: 25px;
+            padding: 20px;
+            border-top: 1px dashed #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header-banner">
+        <h1>Analisis Tingkat Partisipasi Remaja pada Organisasi Intra Sekolah & Forum Kepemudaan Daerah</h1>
+    </div>
+
+    <form id="quizForm" onsubmit="handleSubmit(event)">
+        <!-- BAGIAN I -->
+        <div class="section-box">
+            <div class="section-title">BAGIAN I: IDENTITAS RESPONDEN</div>
+            <div class="section-desc">Petunjuk: Isilah data diri Anda dengan benar atau pilih opsi yang sesuai.</div>
+            
+            <div class="form-group">
+                <label class="question-label" for="nama">Nama :</label>
+                <input type="text" id="nama" class="input-text" placeholder="Masukkan nama atau inisial" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="question-label" for="usia">Usia:</label>
+                <input type="number" id="usia" class="input-text" style="width: 100px;" min="10" max="30" placeholder="Contoh: 16" required> <span style="font-size: 10pt; color: #475569; margin-left: 5px;">Tahun</span>
+            </div>
+            
+            <div class="form-group">
+                <span class="question-label">Jenis Kelamin:</span>
+                <label class="option-item"><input type="radio" name="jk" value="Laki-laki" required> Laki-laki</label>
+                <label class="option-item"><input type="radio" name="jk" value="Perempuan"> Perempuan</label>
+            </div>
+            
+            <div class="form-group">
+                <span class="question-label">Status Saat Ini:</span>
+                <label class="option-item"><input type="radio" name="status" value="Pelajar SMA/SMK/MA" required> Pelajar SMA / SMK / MA</label>
+                <label class="option-item"><input type="radio" name="status" value="Pelajar SMP/MTs"> Pelajar SMP / MTs</label>
+                <label class="option-item"><input type="radio" name="status" value="Mahasiswa"> Mahasiswa</label>
+                <label class="option-item"><input type="radio" name="status" value="Umum/Bekerja"> Umum / Bekerja</label>
+            </div>
+        </div>
+
+        <!-- BAGIAN II -->
+        <div class="section-box">
+            <div class="section-title">BAGIAN II: KETERLIBATAN DALAM ORGANISASI INTRA SEKOLAH</div>
+            <div class="section-desc">Organisasi Intra Sekolah adalah organisasi resmi yang berada di dalam lingkungan sekolah (contoh: OSIS, MPK, Pramuka, PMR, Paskibra, Rohis, Komunitas IT/Coding, dll).</div>
+            
+            <div class="form-group">
+                <span class="question-label">1. Apakah Anda saat ini atau pernah menjadi anggota/pengurus organisasi di dalam sekolah?</span>
+                <label class="option-item"><input type="radio" name="q_intra_1" value="Ya" required> Ya (Lanjut ke nomor 2 & 3)</label>
+                <label class="option-item"><input type="radio" name="q_intra_1" value="Tidak"> Tidak (Bisa langsung melewati nomor 2 & 3)</label>
+            </div>
+            
+            <div class="form-group">
+                <span class="question-label">2. Apa saja jenis organisasi intra sekolah yang Anda ikuti? (Boleh memilih lebih dari satu)</span>
+                <label class="option-item"><input type="checkbox" name="intra_type" value="OSIS/MPK"> OSIS / MPK</label>
+                <label class="option-item"><input type="checkbox" name="intra_type" value="Bela Negara"> Ekstrakurikuler Bidang Bela Negara / Fisik (Pramuka, Paskibra, PMR, Pencak Silat)</label>
+                <label class="option-item"><input type="checkbox" name="intra_type" value="Bakat Keahlian"> Ekstrakurikuler Bidang Bakat & Keahlian (Seni, Olahraga, Jurnalistik, Komunitas IT/Coding)</label>
+                <label class="option-item"><input type="checkbox" name="intra_type" value="Kerohanian"> Ekstrakurikuler Bidang Kerohanian (Rohis / Rokris)</label>
+                <label class="option-item"><input type="checkbox" name="intra_type" value="Lainnya"> Lainnya: <input type="text" class="input-inline-text" id="intra_type_other"></label>
+            </div>
+            
+            <div class="form-group">
+                <span class="question-label">3. Apa alasan utama Anda bergabung dengan organisasi di sekolah?</span>
+                <label class="option-item"><input type="radio" name="q_intra_3" value="Relasi"> Ingin menambah relasi / teman</label>
+                <label class="option-item"><input type="radio" name="q_intra_3" value="Leadership"> Ingin melatih mental dan kepemimpinan (leadership)</label>
+                <label class="option-item"><input type="radio" name="q_intra_3" value="Produktif"> Mengisi waktu luang agar produktif</label>
+                <label class="option-item"><input type="radio" name="q_intra_3" value="Kewajiban"> Diwajibkan oleh pihak sekolah / sekadar ikut-ikutan teman</label>
+                <label class="option-item"><input type="radio" name="q_intra_3" value="Lainnya"> Lainnya</label>
+            </div>
+        </div>
+
+        <!-- BAGIAN III -->
+        <div class="section-box">
+            <div class="section-title">BAGIAN III: KETERLIBATAN DALAM FORUM ORGANISASI KEPEMUDAAN DAERAH</div>
+            <div class="section-desc">Organisasi Kepemudaan Daerah adalah wadah organisasi di luar sekolah yang berbasis di lingkungan tempat tinggal atau daerah (contoh: Karang Taruna, Remaja Masjid/Gereja, IPNU/IPPNU, KNPI, atau komunitas sosial pemuda daerah).</div>
+            
+            <div class="form-group">
+                <span class="question-label">1. Apakah Anda mengetahui adanya forum atau organisasi kepemudaan di wilayah tempat tinggal Anda (RT/RW/Desa/Kecamatan)?</span>
+                <label class="option-item"><input type="radio" name="q_daerah_1" value="Sangat Tahu" required> Ya, sangat tahu dan paham kegiatannya</label>
+                <label class="option-item"><input type="radio" name="q_daerah_1" value="Tahu Nama"> Tahu namanya, tetapi tidak tahu kegiatannya</label>
+                <label class="option-item"><input type="radio" name="q_daerah_1" value="Tidak Tahu"> Tidak tahu sama sekali</label>
+            </div>
+            
+            <div class="form-group">
+                <span class="question-label">2. Apakah Anda terlibat aktif dalam kepengurusan atau kegiatan organisasi kepemudaan daerah tersebut?</span>
+                <label class="option-item"><input type="radio" name="q_daerah_2" value="Aktif Pengurus" required> Ya, aktif sebagai pengurus / anggota tetap</label>
+                <label class="option-item"><input type="radio" name="q_daerah_2" value="Kadang-kadang"> Kadang-kadang ikut jika ada acara besar saja (misal: Acara HUT RI / 17 Agustus-an)</label>
+                <label class="option-item"><input type="radio" name="q_daerah_2" value="Tidak Pernah"> Tidak pernah terlibat sama sekali</label>
+            </div>
+            
+            <div class="form-group">
+                <span class="question-label">3. Menurut pandangan Anda pribadi, apa hal yang paling membuat remaja atau pemuda malas untuk ikut organisasi di tingkat daerah?</span>
+                <label class="option-item"><input type="radio" name="q_daerah_3" value="Kurang Informasi"> Informasi kegiatannya kurang tersebar luas / kurang sosialisasi</label>
+                <label class="option-item"><input type="radio" name="q_daerah_3" value="Bentrok Jadwal"> Bentrok dengan jadwal sekolah, tugas, atau kerjaan</label>
+                <label class="option-item"><input type="radio" name="q_daerah_3" value="Monoton"> Kegiatannya kurang menarik dan monoton (kurang relevan dengan Gen-Z)</label>
+                <label class="option-item"><input type="radio" name="q_daerah_3" value="Kurang Merangkul"> Lingkungan organisasinya kurang merangkul anak muda baru</label>
+                <label class="option-item"><input type="radio" name="q_daerah_3" value="Lainnya"> Lainnya</label>
+            </div>
+        </div>
+
+        <!-- BAGIAN IV -->
+        <div class="section-box">
+            <div class="section-title">BAGIAN IV: PENILAIAN DAMPAK DAN MANFAAT BERORGANISASI</div>
+            <div class="section-desc">Petunjuk: Pilih satu tingkat persetujuan yang paling sesuai dengan pendapat Anda pribadi.<br>
+            <b>STS</b> = Sangat Tidak Setuju | <b>TS</b> = Tidak Setuju | <b>N</b> = Netral | <b>S</b> = Setuju | <b>SS</b> = Sangat Setuju</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Pernyataan</th>
+                        <th>STS</th>
+                        <th>TS</th>
+                        <th>N</th>
+                        <th>S</th>
+                        <th>SS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td class="statement">Kegiatan organisasi (baik di sekolah maupun di daerah) sangat penting untuk membentuk karakter kepemimpinan remaja.</td>
+                        <td><input type="radio" name="p1" value="1" required></td>
+                        <td><input type="radio" name="p1" value="2"></td>
+                        <td><input type="radio" name="p1" value="3"></td>
+                        <td><input type="radio" name="p1" value="4"></td>
+                        <td><input type="radio" name="p1" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td class="statement">Masuk organisasi membantu saya meningkatkan kemampuan berbicara di depan umum (public speaking) dan kerja sama tim.</td>
+                        <td><input type="radio" name="p2" value="1" required></td>
+                        <td><input type="radio" name="p2" value="2"></td>
+                        <td><input type="radio" name="p2" value="3"></td>
+                        <td><input type="radio" name="p2" value="4"></td>
+                        <td><input type="radio" name="p2" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td class="statement">Forum kepemudaan daerah saat ini sudah memanfaatkan teknologi/media sosial dengan baik untuk merangkul anggotanya.</td>
+                        <td><input type="radio" name="p3" value="1" required></td>
+                        <td><input type="radio" name="p3" value="2"></td>
+                        <td><input type="radio" name="p3" value="3"></td>
+                        <td><input type="radio" name="p3" value="4"></td>
+                        <td><input type="radio" name="p3" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td class="statement">Perlu adanya kolaborasi bersama (seperti membuat event bareng) antara OSIS/organisasi sekolah dengan Karang Taruna daerah.</td>
+                        <td><input type="radio" name="p4" value="1" required></td>
+                        <td><input type="radio" name="p4" value="2"></td>
+                        <td><input type="radio" name="p4" value="3"></td>
+                        <td><input type="radio" name="p4" value="4"></td>
+                        <td><input type="radio" name="p4" value="5"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- BAGIAN V -->
+        <div class="section-box">
+            <div class="section-title">BAGIAN V: SARAN & HARAPAN (PERTANYAAN TERBUKA)</div>
+            
+            <div class="form-group">
+                <label class="question-label" for="saran">1. Menurut Anda, acara atau kegiatan seperti apa yang paling dicari dan dibutuhkan oleh anak muda saat ini agar mereka mau aktif di organisasi?</label>
+                <textarea id="saran" class="textarea-input" placeholder="Tuliskan pendapat atau saran Anda di sini..." required></textarea>
+            </div>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="btn-submit">Kirim Jawaban Kuesioner</button>
+    </form>
+
+    <div class="footer-note">
+        "Terima kasih banyak atas waktu, kesediaan, dan kejujuran Anda dalam mengisi kuesioner ini. Pendapat yang Anda berikan sangat berarti untuk kelancaran penyelesaian tugas survei kami. Semoga sukses selalu!"
+    </div>
+
+</div>
+
+<script>
+    function handleSubmit(event) {
+        event.preventDefault();
+        alert('trimakasih sudah meluangkan waktu untuk meladeni kegabutane sutris dan padil');
+        document.getElementById('quizForm').reset();
+    }
+</script>
+
+</body>
+</html>
