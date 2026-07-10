@@ -175,6 +175,7 @@
             width: 100%;
             box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
             transition: background-color 0.2s;
+            font-family: inherit;
         }
         .btn-submit:hover {
             background-color: #1d4ed8;
@@ -280,7 +281,7 @@
             
             <div class="form-group">
                 <span class="question-label">3. Menurut pandangan Anda pribadi, apa hal yang paling membuat remaja atau pemuda malas untuk ikut organisasi di tingkat daerah?</span>
-                <label class="option-item"><input type="radio" name="q_daerah_3" value="Kurang Informasi"> Informasi kegiatannya kurang tersebar luas / kurang sosialisasi</label>
+                <label class="option-item"><input type="radio" name="q_daerah_3" value="Kurang Informasi" required> Informasi kegiatannya kurang tersebar luas / kurang sosialisasi</label>
                 <label class="option-item"><input type="radio" name="q_daerah_3" value="Bentrok Jadwal"> Bentrok dengan jadwal sekolah, tugas, atau kerjaan</label>
                 <label class="option-item"><input type="radio" name="q_daerah_3" value="Monoton"> Kegiatannya kurang menarik dan monoton (kurang relevan dengan Gen-Z)</label>
                 <label class="option-item"><input type="radio" name="q_daerah_3" value="Kurang Merangkul"> Lingkungan organisasinya kurang merangkul anak muda baru</label>
@@ -358,7 +359,7 @@
         </div>
 
         <!-- SUBMIT BUTTON -->
-        <a href="gambar.html" class="btn-submit">Kirim Jawaban Kuesioner</a>
+        <button type="submit" class="btn-submit">Kirim Jawaban Kuesioner</button>
     </form>
 
     <div class="footer-note">
@@ -368,10 +369,55 @@
 </div>
 
 <script>
+    const q_intra_1_radios = document.querySelectorAll('input[name="q_intra_1"]');
+    const q_intra_3_radios = document.querySelectorAll('input[name="q_intra_3"]');
+    const intra_type_checkboxes = document.querySelectorAll('input[name="intra_type"]');
+
+    function updateIntraValidation() {
+        const isYes = document.querySelector('input[name="q_intra_1"]:checked')?.value === 'Ya';
+        
+        // Update required for Q3 (radio group)
+        q_intra_3_radios.forEach(radio => {
+            radio.required = isYes;
+            if (!isYes) {
+                radio.checked = false;
+            }
+        });
+
+        // Update custom validity for checkboxes (Q2)
+        const firstCheckbox = intra_type_checkboxes[0];
+        if (isYes) {
+            const isAnyChecked = Array.from(intra_type_checkboxes).some(cb => cb.checked);
+            if (!isAnyChecked) {
+                firstCheckbox.setCustomValidity('Pilih minimal satu jenis organisasi yang Anda ikuti.');
+            } else {
+                firstCheckbox.setCustomValidity('');
+            }
+        } else {
+            firstCheckbox.setCustomValidity('');
+            intra_type_checkboxes.forEach(cb => {
+                cb.checked = false;
+            });
+            const otherInput = document.getElementById('intra_type_other');
+            if (otherInput) {
+                otherInput.value = '';
+            }
+        }
+    }
+
+    // Add event listeners to trigger validation update when user interacts
+    q_intra_1_radios.forEach(radio => radio.addEventListener('change', updateIntraValidation));
+    intra_type_checkboxes.forEach(cb => cb.addEventListener('change', updateIntraValidation));
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        updateIntraValidation();
+    });
+
     function handleSubmit(event) {
         event.preventDefault();
         alert('trimakasih sudah meluangkan waktu untuk meladeni kegabutane sutris dan padil');
-        document.getElementById('quizForm').reset();
+        window.location.href = 'gambar.html';
     }
 </script>
 
